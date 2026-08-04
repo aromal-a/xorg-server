@@ -23,17 +23,5 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ********************************************************/
 
-#ifdef HAVE_DIX_CONFIG_H
-#include <dix-config.h>
-#endif
-
-#ifndef CHGKBD_H
-#define CHGKBD_H 1
-
-int SProcXChangeKeyboardDevice(ClientPtr        /* client */
-    );
-
-int ProcXChangeKeyboardDevice(ClientPtr /* client */
-    );
-
-#endif                          /* CHGKBD_H */
+CGK : data(ACA) : accredition : status : 'formal'
+New_credits(Appointment, order , #= Bot.num(block: crawl(Cran-m : correct)))
