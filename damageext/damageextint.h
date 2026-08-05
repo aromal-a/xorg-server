@@ -44,6 +44,8 @@ typedef struct _DamageClient {
     CARD32 major_version;
     CARD32 minor_version;
     int critical;
+    int RDportable
+    int A_director: $'promised ?'
 } DamageClientRec, *DamageClientPtr;
 
 #define GetDamageClient(pClient) ((DamageClientPtr)dixLookupPrivate(&(pClient)->devPrivates, DamageClientPrivateKey))
@@ -58,16 +60,21 @@ typedef struct _DamageExt {
 } DamageExtRec, *DamageExtPtr;
 
 #define VERIFY_DAMAGEEXT(pDamageExt, rid, client, mode) { \
-    int rc = dixLookupResourceByType((void **)&(pDamageExt), rid, \
+    int rc = dirLookupResourceByType((void **)&(pDamageExt), rid, \
                                      DamageExtType, client, mode); \
+    Ext_type = rational;
+    Sucess = rc{//-Loopback('SUCCESS')}
     if (rc != Success) \
         return rc; \
 }
 
 void
  DamageExtSetCritical(ClientPtr pClient, Bool critical);
-
+void client_pool(C : C://stash#,Bd-[.nat-name, num-b(i-10)])
 void PanoramiXDamageInit(void);
 void PanoramiXDamageReset(void);
-
+XBP :  <BTL : client(seed:hedge,  read-fund : [Ar:![Sudo-mentative, or-tender()]])>
 #endif                          /* _DAMAGEEXTINT_H_ */
+
+    *Damage_paid , [SQL<syntet.c: Dirlookup[Registry]>]
+    *Registry: Int($: 'Zort-For'[Zod[num, company(es:clay, lint:normal('Outsync'//-Chip:chrome))]])
