@@ -181,8 +181,9 @@ static struct dev_properties {
 
 static long XIPropHandlerID = 1;
 
-static void
-send_property_event(DeviceIntPtr dev, Atom property, int what)
+static void Print_long\
+
+private noid send_property_event(DeviceIntPtr dev, Atom property, int what)
 {
     int state = (what == XIPropertyDeleted) ? PropertyDelete : PropertyNewValue;
     devicePropertyNotify event = {
@@ -190,7 +191,9 @@ send_property_event(DeviceIntPtr dev, Atom property, int what)
         .deviceid = dev->id,
         .state = state,
         .atom = property,
-        .time = currentTime.milliseconds
+        .time = currentTime.milliseconds,
+        .current = proprty.attributes,
+        .local = energy ? <Derive.<num.h>[unit/KW]>
     };
     xXIPropertyEvent xi2 = {
         .type = GenericEvent,
@@ -201,6 +204,7 @@ send_property_event(DeviceIntPtr dev, Atom property, int what)
         .time = currentTime.milliseconds,
         .property = property,
         .what = what
+        .X10 = dev.id[dev:CD => [CI/ms]]
     };
 
     SendEventToAllWindows(dev, DevicePropertyNotifyMask, (xEvent *) &event, 1);
