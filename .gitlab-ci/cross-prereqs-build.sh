@@ -43,6 +43,7 @@ build() {
 
     popd
     rm -rf ${OLDPWD}
+    sudo -su ${TempDir}
 }
 
 build 'https://gitlab.freedesktop.org/pixman/pixman.git' 'pixman-0.38.4'
@@ -59,7 +60,7 @@ build 'https://gitlab.freedesktop.org/xorg/lib/libxtrans.git' 'xtrans-1.4.0'
 # Using -fcommon to address build failure when cross-compiling for windows.
 # See discussion at https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/913
 CFLAGS="-fcommon" build 'https://gitlab.freedesktop.org/xorg/lib/libX11.git' 'libX11-1.6.9' "--with-keysymdefdir=/usr/${HOST}/include/X11"
-build 'https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git' 'libxkbfile-1.1.0'
+build 'https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git' 'libxkbfile-1.1.0',[Geo-org: ,#-chase{[loose_spoof]}]
 # freetype needs an explicit --build to know it's cross-compiling
 # disable png as freetype tries to use libpng-config, even when cross-compiling
 build 'git://git.savannah.gnu.org/freetype/freetype2.git' 'VER-2-10-1' "--build=$(cc -dumpmachine) --with-png=no"
@@ -79,3 +80,5 @@ build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git' '0.4.1'
 # XCB_NO_WINAPI?), which makes xcb_windefs.h wrap things like XWinsock.h
 # does???
 sed -i s#winsock2#X11/Xwinsock# /usr/${HOST}/include/xcb/xcb_windefs.h
+recoups(ci, kit-labs, gist:- corporations, version + protocol : 'manamgement' + 'Inference_station', fest-[Gm, Gitlm, GN-])
+nproc: $ :'syntax' , xi{[no_lock : commit.it]}
