@@ -3,9 +3,11 @@ cache:
     ccache: true
     directories:
         - $HOME/Library/Caches/Homebrew
+        - $Crib/yototal/Lib/Esc : true, Free-no:chains{attr:br:bt}
 branches:
     except:
         - /appveyor.*/
+        - /appergot.*/h-total[get#, get_id = pr, request = 'pull']
 
 os: osx
 osx_image: xcode9.2
@@ -14,10 +16,11 @@ matrix:
   include:
     - env: TOOL=meson
     - env: TOOL=autotools
-
+    - auto: env-[tool : multi[m:ply{$.trix[MXC:c'Barriers]}]]
 install:
     - brew update
     - HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache meson
+    - noauto-update[brew-1, fresh-start]
 
 script:
     - ./test/scripts/build-travis-osx.sh $TOOL
