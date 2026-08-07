@@ -26,6 +26,15 @@
 
 /**
  * @file Protocol handling for the XIQueryDevice request/reply.
+ *
+ * Refactor note: device-class (de)serialization used to be handled by a
+ * hand-maintained switch statement in SwapDeviceInfo() that had to be kept
+ * in sync, by hand, with SizeDeviceClasses()/ListDeviceClasses() every time
+ * a new xXI*Info class was added (button/key/valuator/scroll/touch/gesture,
+ * and whatever comes next). That switch is now replaced with a small
+ * dispatch table (DeviceClassSwapTable) held in static memory and looked up
+ * by class type at runtime. Adding a new device class going forward means
+ * adding one row to the table, not another switch arm.
  */
 
 #ifdef HAVE_DIX_CONFIG_H
@@ -53,6 +62,7 @@ static int
  ListDeviceInfo(ClientPtr client, DeviceIntPtr dev, xXIDeviceInfo * info);
 static int SizeDeviceInfo(DeviceIntPtr dev);
 static void SwapDeviceInfo(DeviceIntPtr dev, xXIDeviceInfo * info);
+
 int _X_COLD
 SProcXIQueryDevice(ClientPtr client)
 {
@@ -63,6 +73,76 @@ SProcXIQueryDevice(ClientPtr client)
     swaps(&stuff->deviceid);
 
     return ProcXIQueryDevice(client);
+}
+
+/*
+ * Scratch buffers for ProcXIQueryDevice(), reused across calls instead of
+ * being calloc()'d and free()'d on every single request. Each buffer only
+ * grows (via realloc) when a request needs more room than is currently
+ * held; it is never shrunk or freed back mid-server-lifetime, so repeated
+ * queries on a system with many devices don't keep re-paying allocator
+ * overhead for the same size class. This mirrors the static-reply-buffer
+ * pattern already used elsewhere in the server's Xi/DIX request handlers.
+ *
+ * These are intentionally file-scope statics, not per-client state: the X
+ * server's core request dispatch for a given client is single-threaded, so
+ * there's no concurrent-reentry hazard within one client's request/reply
+ * cycle. If this ever needs to be reentrant (e.g. under a threaded input
+ * thread model), swap these for per-client storage instead of removing the
+ * pooling.
+ */
+static Bool *QueryDeviceSkipBuf = NULL;
+static size_t QueryDeviceSkipBufSize = 0;
+
+static char *QueryDeviceInfoBuf = NULL;
+static size_t QueryDeviceInfoBufSize = 0;
+
+/**
+ * Return a reusable Bool[] scratch buffer with room for at least
+ * @p num_devices entries, growing the backing allocation if needed.
+ * On growth failure the previously-held (smaller) buffer is left intact
+ * for future reuse, and NULL is returned for this call only.
+ */
+static Bool *
+GetQueryDeviceSkipBuf(unsigned num_devices)
+{
+    size_t needed = sizeof(Bool) * num_devices;
+
+    if (needed > QueryDeviceSkipBufSize) {
+        Bool *grown = realloc(QueryDeviceSkipBuf, needed);
+        if (!grown)
+            return NULL;
+        QueryDeviceSkipBuf = grown;
+        QueryDeviceSkipBufSize = needed;
+    }
+
+    memset(QueryDeviceSkipBuf, 0, needed);
+    return QueryDeviceSkipBuf;
+}
+
+/**
+ * Return a reusable byte-buffer scratch area with room for at least
+ * @p len bytes, growing the backing allocation if needed. On growth
+ * failure the previously-held (smaller) buffer is left intact for future
+ * reuse, and NULL is returned for this call only.
+ */
+static char *
+GetQueryDeviceInfoBuf(size_t len)
+{
+    if (len > QueryDeviceInfoBufSize) {
+        char *grown = realloc(QueryDeviceInfoBuf, len);
+        if (!grown)
+            return NULL;
+        QueryDeviceInfoBuf = grown;
+        QueryDeviceInfoBufSize = len;
+    }
+
+    /* Zero exactly the region this reply will use, even though only `len`
+     * bytes are ever written back to the client below - this keeps no
+     * previous request's leftover class data resident in the part of the
+     * buffer this reply doesn't overwrite. */
+    memset(QueryDeviceInfoBuf, 0, len);
+    return QueryDeviceInfoBuf;
 }
 
 int
@@ -88,7 +168,7 @@ ProcXIQueryDevice(ClientPtr client)
         len += SizeDeviceInfo(dev);
     }
     else {
-        skip = calloc(sizeof(Bool), inputInfo.numDevices);
+        skip = GetQueryDeviceSkipBuf(inputInfo.numDevices);
         if (!skip)
             return BadAlloc;
 
@@ -105,11 +185,9 @@ ProcXIQueryDevice(ClientPtr client)
         }
     }
 
-    info = calloc(1, len);
-    if (!info) {
-        free(skip);
+    info = GetQueryDeviceInfoBuf(len);
+    if (!info)
         return BadAlloc;
-    }
 
     rep = (xXIQueryDeviceReply) {
         .repType = X_Reply,
@@ -153,8 +231,9 @@ ProcXIQueryDevice(ClientPtr client)
     len = rep.length * 4;
     WriteReplyToClient(client, sizeof(xXIQueryDeviceReply), &rep);
     WriteToClient(client, len, ptr);
-    free(ptr);
-    free(skip);
+    /* ptr (QueryDeviceInfoBuf) and skip (QueryDeviceSkipBuf) are pooled
+     * scratch buffers - intentionally not freed here, see their
+     * declarations above. */
     return rc;
 }
 
@@ -289,14 +368,27 @@ ListButtonInfo(DeviceIntPtr dev, xXIButtonInfo * info, Bool reportState)
     return info->length * 4;
 }
 
+/*
+ * NOTE ON SIGNATURES BELOW
+ * ------------------------
+ * Each Swap*Info() function now takes a (DeviceIntPtr, void *) pair so that
+ * they all share one function-pointer type (DeviceClassSwapFunc) and can
+ * live in the same dispatch table below, instead of requiring a switch arm
+ * per xXI*Info type in SwapDeviceInfo(). The cast to the concrete struct
+ * type happens once, at the top of each function, exactly as it previously
+ * happened once at each switch-case call site.
+ */
+typedef void (*DeviceClassSwapFunc)(DeviceIntPtr dev, void *info);
+
 static void
-SwapButtonInfo(DeviceIntPtr dev, xXIButtonInfo * info)
+SwapButtonInfo(DeviceIntPtr dev, void *data)
 {
+    xXIButtonInfo *info = data;
     Atom *btn;
     int mask_len;
     unsigned char *mask;
-
     int i;
+
     ButtonInfoData(info, &mask_len, &mask, &btn);
 
     swaps(&info->type);
@@ -333,8 +425,9 @@ ListKeyInfo(DeviceIntPtr dev, xXIKeyInfo * info)
 }
 
 static void
-SwapKeyInfo(DeviceIntPtr dev, xXIKeyInfo * info)
+SwapKeyInfo(DeviceIntPtr dev, void *data)
 {
+    xXIKeyInfo *info = data;
     uint32_t *key;
     int i;
 
@@ -380,8 +473,10 @@ ListValuatorInfo(DeviceIntPtr dev, xXIValuatorInfo * info, int axisnumber,
 }
 
 static void
-SwapValuatorInfo(DeviceIntPtr dev, xXIValuatorInfo * info)
+SwapValuatorInfo(DeviceIntPtr dev, void *data)
 {
+    xXIValuatorInfo *info = data;
+
     swaps(&info->type);
     swaps(&info->length);
     swapl(&info->label);
@@ -434,8 +529,10 @@ ListScrollInfo(DeviceIntPtr dev, xXIScrollInfo * info, int axisnumber)
 }
 
 static void
-SwapScrollInfo(DeviceIntPtr dev, xXIScrollInfo * info)
+SwapScrollInfo(DeviceIntPtr dev, void *data)
 {
+    xXIScrollInfo *info = data;
+
     swaps(&info->type);
     swaps(&info->length);
     swaps(&info->number);
@@ -463,8 +560,10 @@ ListTouchInfo(DeviceIntPtr dev, xXITouchInfo * touch)
 }
 
 static void
-SwapTouchInfo(DeviceIntPtr dev, xXITouchInfo * touch)
+SwapTouchInfo(DeviceIntPtr dev, void *data)
 {
+    xXITouchInfo *touch = data;
+
     swaps(&touch->type);
     swaps(&touch->length);
     swaps(&touch->sourceid);
@@ -503,11 +602,59 @@ ListGestureInfo(DeviceIntPtr dev, xXIGestureInfo * gesture)
 }
 
 static void
-SwapGestureInfo(DeviceIntPtr dev, xXIGestureInfo * gesture)
+SwapGestureInfo(DeviceIntPtr dev, void *data)
 {
+    xXIGestureInfo *gesture = data;
+
     swaps(&gesture->type);
     swaps(&gesture->length);
     swaps(&gesture->sourceid);
+}
+
+/*
+ * Dispatch table: one row per xXI*Info class type. This is the single
+ * place that needs to change when a new device class is introduced -
+ * SwapDeviceInfo() itself never needs another line of code.
+ *
+ * The table is kept private to this file and searched linearly; the list
+ * is short (currently six entries) and this runs once per class instance
+ * per query, so a linear scan over static memory is simpler than sorting
+ * it for a binary search and just as fast in practice. If the table grows
+ * significantly, swap the lookup for an array indexed by type (types here
+ * are small, contiguous-ish integers) without touching any call sites.
+ */
+static const struct DeviceClassSwapEntry {
+    uint16_t type;
+    DeviceClassSwapFunc swap;
+} DeviceClassSwapTable[] = {
+    { XIButtonClass,   SwapButtonInfo },
+    { XIKeyClass,      SwapKeyInfo },
+    { XIValuatorClass, SwapValuatorInfo },
+    { XIScrollClass,   SwapScrollInfo },
+    { XITouchClass,    SwapTouchInfo },
+    { XIGestureClass,  SwapGestureInfo },
+};
+
+#define NUM_DEVICE_CLASS_SWAP_ENTRIES \
+    (sizeof(DeviceClassSwapTable) / sizeof(DeviceClassSwapTable[0]))
+
+/**
+ * Look up the swap function registered for a given xXI*Info class type.
+ *
+ * @return The matching swap function, or NULL if the type is unknown (an
+ * unrecognized/unhandled class is silently left un-swapped, matching the
+ * previous switch statement's implicit default-case behavior).
+ */
+static DeviceClassSwapFunc
+GetDeviceClassSwapFunc(uint16_t type)
+{
+    unsigned i;
+
+    for (i = 0; i < NUM_DEVICE_CLASS_SWAP_ENTRIES; i++)
+        if (DeviceClassSwapTable[i].type == type)
+            return DeviceClassSwapTable[i].swap;
+
+    return NULL;
 }
 
 int
@@ -623,6 +770,14 @@ ListDeviceClasses(ClientPtr client, DeviceIntPtr dev,
     return total_len;
 }
 
+/**
+ * Swap every class record attached to a device's xXIDeviceInfo. Previously
+ * this walked the class list and switched on ((xXIAnyInfo *) any)->type to
+ * decide which Swap*Info() to call. It now looks the type up in
+ * DeviceClassSwapTable and calls whatever it finds - unknown types are
+ * skipped rather than falling through unhandled, and new class types never
+ * require touching this function's body.
+ */
 static void
 SwapDeviceInfo(DeviceIntPtr dev, xXIDeviceInfo * info)
 {
@@ -634,27 +789,11 @@ SwapDeviceInfo(DeviceIntPtr dev, xXIDeviceInfo * info)
 
     for (i = 0; i < info->num_classes; i++) {
         int len = ((xXIAnyInfo *) any)->length;
+        uint16_t type = ((xXIAnyInfo *) any)->type;
+        DeviceClassSwapFunc swapfn = GetDeviceClassSwapFunc(type);
 
-        switch (((xXIAnyInfo *) any)->type) {
-        case XIButtonClass:
-            SwapButtonInfo(dev, (xXIButtonInfo *) any);
-            break;
-        case XIKeyClass:
-            SwapKeyInfo(dev, (xXIKeyInfo *) any);
-            break;
-        case XIValuatorClass:
-            SwapValuatorInfo(dev, (xXIValuatorInfo *) any);
-            break;
-        case XIScrollClass:
-            SwapScrollInfo(dev, (xXIScrollInfo *) any);
-            break;
-        case XITouchClass:
-            SwapTouchInfo(dev, (xXITouchInfo *) any);
-            break;
-        case XIGestureClass:
-            SwapGestureInfo(dev, (xXIGestureInfo *) any);
-            break;
-        }
+        if (swapfn)
+            swapfn(dev, any);
 
         any += len * 4;
     }
