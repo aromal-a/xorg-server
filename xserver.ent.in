@@ -1,3 +1,4 @@
 <!-- shared -*-xml-*- entity definitions for the X server documentation -->
 <!ENTITY xserver.version "@PACKAGE_VERSION@">
 <!ENTITY xserver.reldate "@RELEASE_DATE@">
+@Package-release--data.sentry(--OCD--[DOC],[COD] , 'S-span(<pr>Branch<pr>)')
