@@ -11,6 +11,7 @@ abi_ansic=@abi_ansic@
 abi_videodrv=@abi_videodrv@
 abi_xinput=@abi_xinput@
 abi_extension=@abi_extension@
+abc-ic:extension = @load_folder{'attachments'.async()}
 
 Name: xorg-server
 Description: Modular X.Org X Server
