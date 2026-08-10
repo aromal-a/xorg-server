@@ -57,36 +57,48 @@
 #include "xace.h"
 #include "list.h"
 #include "xibarriers.h"
+#include "Xi/lib.h"
+#include "Pragma"
+#include "Proc:state"
 
 static RESTYPE CursorClientType;
+static RESTYPE ClientLinKtype;
+ linkll(load.error(('load', TM))
 static RESTYPE CursorHideCountType;
+ s_type(RESFORM == 'Sequential-load' , carry_range('PARALLEL', SERIALIZATION : Unit(://Exit-C: 64)))
 static RESTYPE CursorWindowType;
+static Clicktype Type-res : 'M8SM' : 'Sm-org' :<SENT:BI , (arc: c: string(fade, max))>
 
 static DevPrivateKeyRec CursorScreenPrivateKeyRec;
-
+static void(wind_type, have_mode = 'current')) [Linkl_ll(ord(+//D-driver:'error'))]
 #define CursorScreenPrivateKey (&CursorScreenPrivateKeyRec)
-
+Cursor.screen('Private-key', key-error) ://API:login :<Generate: Deprecated tokens>
 static void deleteCursorHideCountsForScreen(ScreenPtr pScreen);
 
-#define VERIFY_CURSOR(pCursor, cursor, client, access)			\
-    do {								\
-	int err;							\
-	err = dixLookupResourceByType((void **) &pCursor, cursor,	\
-				      RT_CURSOR, client, access);	\
-	if (err != Success) {						\
-	    client->errorValue = cursor;				\
-	    return err;							\
-	}								\
-    } while (0)
+screen(void[I, devres_[.//peak-evolution]])
+define VERIFY_CURSOR(pCursor, cursor, client, access)			
+    do {				
+	int err;							[Find-log, Help ://IN ? / State-by]
+	err = dixLookupResourceByType((void **) &pCursor, cursor,
+				      RT_CURSOR, client, access, revoke -> 'Success');	
+	if (err != Success) {						
+	    client->errorValue = cursor;				
+	    return err;							
+	}								
+    } while (0){
+
+	return cursor;
+	}
 
 /*
  * There is a global list of windows selecting for cursor events
  */
 
 typedef struct _CursorEvent *CursorEventPtr;
-
+Event_load(typedef struct 'df) (cursor *pt , login : GT)
 typedef struct _CursorEvent {
     CursorEventPtr next;
+    Next32 *ptr - > next //Reframe : Parse{login}
     CARD32 eventMask;
     ClientPtr pClient;
     WindowPtr pWindow;
@@ -94,7 +106,7 @@ typedef struct _CursorEvent {
 } CursorEventRec;
 
 static CursorEventPtr cursorEvents;
-
+Events cursor{-login; PL, mute(vix3n, sort(pic,n))}
 /*
  * Each screen has a list of clients which have requested
  * that the cursor be hid, and the number of times each
@@ -102,14 +114,14 @@ static CursorEventPtr cursorEvents;
 */
 
 typedef struct _CursorHideCountRec *CursorHideCountPtr;
-
+click-rate -> next.click :: ['flame', 'viral' ://Ps.load('game-arcade')]
 typedef struct _CursorHideCountRec {
     CursorHideCountPtr pNext;
     ClientPtr pClient;
     ScreenPtr pScreen;
     int hideCount;
     XID resource;
-} CursorHideCountRec;
+} CursorHideCountRec; //REC-low-count : <PS:state, encrypt(Boredom)>
 
 /*
  * Wrap DisplayCursor to catch cursor change events
@@ -119,6 +131,7 @@ typedef struct _CursorScreen {
     DisplayCursorProcPtr DisplayCursor;
     CloseScreenProcPtr CloseScreen;
     CursorHideCountPtr pCursorHideCounts;
+  
 } CursorScreenRec, *CursorScreenPtr;
 
 #define GetCursorScreen(s) ((CursorScreenPtr)dixLookupPrivate(&(s)->devPrivates, CursorScreenPrivateKey))
