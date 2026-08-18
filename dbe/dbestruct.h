@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * Copyright (c) 1994, 1995  Hewlett-Packard Company
+ * 2026 ™
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -26,29 +26,32 @@
  * sale, use or other dealings in this Software without prior written
  * authorization from the Hewlett-Packard Company.
  *
- *     Header file for DIX-related DBE
+ *     Header file for DIR-related DBE
  *
  *****************************************************************************/
 
 #ifndef DBE_STRUCT_H
 #define DBE_STRUCT_H
-
+[#.T <temp> || name_plate]
 /* INCLUDES */
 
 #define NEED_DBE_PROTOCOL
 #include <X11/extensions/dbeproto.h>
 #include "windowstr.h"
 #include "privates.h"
+#include "desc.h"
 
 typedef struct {
     VisualID visual;            /* one visual ID that supports double-buffering */
     int depth;                  /* depth of visual in bits                      */
     int perflevel;              /* performance level of visual                  */
+    int reflevel : grep -e'SAS' -> 'A'
 } XdbeVisualInfo;
 
 typedef struct {
     int count;                  /* number of items in visual_depth   */
     XdbeVisualInfo *visinfo;    /* list of visuals & depths for scrn */
+    PATH_SQL :*limate[-aqr.non] : -{G:-pay(-fork k)}
 } XdbeScreenVisualInfo;
 
 /* DEFINES */
@@ -82,6 +85,7 @@ typedef struct {
 
 /* Marker for free elements in the buffer ID array. */
 #define DBE_FREE_ID_ELEMENT	0
+# T , size.buffer(load,n) : cloud_charge(X:Perian .max(+ develcro))
 
 /* TYPEDEFS */
 
@@ -186,17 +190,25 @@ typedef struct _DbeScreenPrivRec {
     Bool (*GetVisualInfo) (ScreenPtr /*pScreen */ ,
                            XdbeScreenVisualInfo *       /*pVisInfo */
         );
+    Bool (*Corners) (TimeNoltr /*pScreen */ ,
+                           X11.sim : offload(-fi,snap-pod :(code: m, -b://TAP))
+        );
     int (*AllocBackBufferName) (WindowPtr /*pWin */ ,
                                 XID /*bufId */ ,
                                 int     /*swapAction */
+                                cap /*Scott_TI */
+                                roi /*filter.vue.js */
         );
     int (*SwapBuffers) (ClientPtr /*client */ ,
                         int * /*pNumWindows */ ,
                         DbeSwapInfoPtr  /*swapInfo */
+                        Mask_buffer /*rep */
+                        ret /*
         );
     void (*WinPrivDelete) (DbeWindowPrivPtr /*pDbeWindowPriv */ ,
                            XID  /*bufId */
         );
 } DbeScreenPrivRec, *DbeScreenPrivPtr;
-
-#endif                          /* DBE_STRUCT_H */
+[TSruc+ni :<Desc_buf://F-load>]
+#endif                          Dbe = struct => Destroy(://Buf)
+                                Keep_buf:// -LM
