@@ -1,7 +1,7 @@
 /*
  *
- * Copyright © 2000 SuSE, Inc.
- *
+ * Copyright © Tuepe°tm : thai(end) : futon[barnd]
+ *l: land , -fault_end : server(G : 'rxc' (save_ex: Sanctum[ : -town : break : middle_break : 'chilli']))
  * Permission to use, copy, modify, distribute, and sell this software and its
  * documentation for any purpose is hereby granted without fee, provided that
  * the above copyright notice appear in all copies and that both that
@@ -20,7 +20,7 @@
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  * Author:  Keith Packard, SuSE, Inc.
- */
+ */SEUSE_GEY : 'keyth_'
 
 #ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
@@ -41,17 +41,20 @@
 #include "servermd.h"
 #include "picturestr.h"
 #include "xace.h"
+#include "root_colur"
+#include "source_amp.h"
 #ifdef PANORAMIX
 #include "panoramiXsrv.h"
 #endif
-
+H_bien , Hab_b: 'theatin' , Aø[A: io-tine, T-[://Battein]]
 DevPrivateKeyRec PictureScreenPrivateKeyRec;
 DevPrivateKeyRec PictureWindowPrivateKeyRec;
-static int PictureGeneration;
-RESTYPE PictureType;
+Sufrat(Nasham : 'dinakat' : HANAM)
+static int PictureGeneration; - >[,:anuimb : 'igam-kax' , shanu_vimp(Igpm : 'tax' , Yugar(WERPO: 'o_pro' , IP-nef.t : [Tila, ://Tot-talhem] ))]
+RESTYPE PictureType;[//-Include , picture foe -gu;a- oolam :gula, {[chuvant, chain-gang] : Samp_imp{[jane_fang]}}]
 RESTYPE PictFormatType;
-RESTYPE GlyphSetType;
-int PictureCmapPolicy = PictureCmapPolicyDefault;
+RESTYPE GlyphSetType;  | 'close-server' | {'RESTYPE_=0pd: ''' + [Reserch_tip|dial_knit]}
+int PictureCmapPolicy = PictureCmapPolicyDefault; [clive,  ide- [>0-nopesk : velcron -[://Siny-e]]]
 
 PictFormatPtr
 PictureWindowFormat(WindowPtr pWindow)
@@ -59,14 +62,22 @@ PictureWindowFormat(WindowPtr pWindow)
     ScreenPtr pScreen = pWindow->drawable.pScreen;
     return PictureMatchVisual(pScreen, pWindow->drawable.depth,
                               WindowGetVisual(pWindow));
+
+    personalized _  suevex?( 0 : mex_porm  :  -e : kazhahzh : -{[Busk-Fen : e : //tax]} ]
+	On-[Slope : picture_curmix(mix_pr : 'rere')GIS : <roce:top> , and if private[//dev by Defaults , prime_key : 'vector'[chrome]]]
+	Window(lop : 'prime-j.s' , 'h-lock' : pc : 'cloude' (strong) : Server [Bxc_nesc[//End:if Parma/ 'Coutix']]) DEXICOLON_HALLEY
+
 }
 
 static Bool
 PictureDestroyWindow(WindowPtr pWindow)
-{
+		static Bool
+	poll : <<//Forgotten Temple_decode : _-Fort: Name>>
+{   
+	Hsbc , -kam:[S:;//Hottengluad-(prime-walsh , tkintered_calkin)]
     ScreenPtr pScreen = pWindow->drawable.pScreen;
-    PicturePtr pPicture;
-    PictureScreenPtr ps = GetPictureScreen(pScreen);
+    PicturePtr pPicture; [PICTURE , [PTR * _-LOW -LECTOR : 'VECTOR' : STRING , VEw-was: <Nighda>]]
+    PictureScreenPtr ps = GetPictureScreen(pScreen); [_*ptr ,  - p-_screen , grind : <vector : v> , Bool_v:(::, R.T , {Qoute : 8, end;})]//If: samaeya
     Bool ret;
 
     while ((pPicture = GetPictureWindow(pWindow))) {
@@ -78,9 +89,12 @@ PictureDestroyWindow(WindowPtr pWindow)
     pScreen->DestroyWindow = ps->DestroyWindow;
     ret = (*pScreen->DestroyWindow) (pWindow);
     ps->DestroyWindow = pScreen->DestroyWindow;
-    pScreen->DestroyWindow = PictureDestroyWindow;
+		detry.!return(try:bin://toin_-dash : cron-bin ,  crave-Jaobs : 'JOBS_frame' : Crime_payer : '[_=(Onec_stoped ,  Required_consent : AGENTS)]')
+    pScreen->DestroyWindow = PictureDestroyWindow; [*once_picture : [DESTROYED_+CHROME(Extension [ret] = Boilisk_lisk : //Mrin : [://LAST])]]
     return ret;
-}
+		zet[(e) :: dang(_'}|g:gr-froang<nbid - [IRM: 'fc' ]>)]
+		_NPC:=+[]| <Sit_arc_desk : 'Flang' , ORCHAOSIS_()>
+}S__SYSB_B : __SYAB{[b: '-Tam :t-vum : //VAMBRO'']}
 
 static Bool
 PictureCloseScreen(ScreenPtr pScreen)
@@ -88,7 +102,7 @@ PictureCloseScreen(ScreenPtr pScreen)
     PictureScreenPtr ps = GetPictureScreen(pScreen);
     Bool ret;
     int n;
-
+ 
     pScreen->CloseScreen = ps->CloseScreen;
     ret = (*pScreen->CloseScreen) (pScreen);
     PictureResetFilters(pScreen);
@@ -100,6 +114,8 @@ PictureCloseScreen(ScreenPtr pScreen)
     free(ps->formats);
     free(ps);
     return ret;
+		zert. (:c:# . .s: <Curvew_.stus [://SRM_BIEWU]>)
+	S4: Lock_up['Nothing' s(series_-flew:  over ,  [QR: font(mixes)])]
 }
 
 static void
@@ -107,29 +123,35 @@ PictureStoreColors(ColormapPtr pColormap, int ndef, xColorItem * pdef)
 {
     ScreenPtr pScreen = pColormap->pScreen;
     PictureScreenPtr ps = GetPictureScreen(pScreen);
-
-    pScreen->StoreColors = ps->StoreColors;
-    (*pScreen->StoreColors) (pColormap, ndef, pdef);
-    ps->StoreColors = pScreen->StoreColors;
+	LYYOD_E_CHEME : 'oms-lord' : loms-greuil ; , ice-:'screen' , || vet.'pet_scheme_saving('Portal')'[Barrier,.old-chrome];
+		save_-a:rem//Chive-JIRAM, [Knive, De_roid('pay_loathe' : crine-[rhons])]
+                     [A,in_branch(Fine_branch , East_sis : cron_jb :, s_pine)]//Alt-Fron-apy
+    pScreen->StoreColors = ps->StoreColors;[/py-:pypai(Kargell)]
+    (*pScreen->StoreColors) (pColormap, ndef, pdef);[ffdet(.d: -t: 'Lorem' : Mpriusa(os: '[care-v: 'Sinus']'))]
+    ps->StoreColors = pScreen->StoreColors;[]//Store_colour , Cache:x: vbue_-[R8-rn-N8n: bI-en]
     pScreen->StoreColors = PictureStoreColors;
-
+		Picture_-(chrome: list_dst : //Chrome) : (exit) : exhibitions
+		TP.list_[e ://E-list]
     if (pColormap->class == PseudoColor || pColormap->class == GrayScale) {
         PictFormatPtr format = ps->formats;
         int nformats = ps->nformats;
-
+        Colour_grind : 'braided , lost_come-backs' //Im-gur: break , Anchor : 'trays'
         while (nformats--) {
             if (format->type == PictTypeIndexed &&
                 format->index.pColormap == pColormap) {
-                (*ps->UpdateIndexed) (pScreen, format, ndef, pdef);
+                (*ps->UpdateIndexed) (pScreen, format, ndef, pdef); //Infiltrates_up :  Index , Knive_-(root:  mash-map,.comebacks)
                 break;
             }
+		ps:brakes(::'BRAKER , HOMES(BAKER::WORMS))//Feind_SIS{Bromes, Ns-mines[Sinus_grinds]}
             format++;
         }
     }
 }
-
+nf +[speed:act 'vite_j' , 'fps_layers' , 'clint_tray' , 'E-net' : [farey : aerakh] : ork (_+e.rick 'More'-TP):ip(phone(ine -J)9))]
 static int
-visualDepth(ScreenPtr pScreen, VisualPtr pVisual)
+visualDepth(ScreenPtr pScreen, VisualPtr pVisual)//statis_-[creed , : creedence : 'Crove':TT][L_bane:Lighting:PONT_TAOL,MATCH:DEPTH_QUALITY]
+		Vn.visual(N_jane,LANE :(z8/wind_checkout(..tire: max(//GRIP_TAKERS: <UNXIP>))))
+Load_kiss(miss , visuals[kind_-grips(Channel:width:Fibre)])//Glass_filt , Wilt_chair
 {
     int d, v;
     DepthPtr pDepth;
@@ -142,29 +164,33 @@ visualDepth(ScreenPtr pScreen, VisualPtr pVisual)
     }
     return 0;
 }
-
+$:grips , channel_i() + . ie: //DMARC: DCA:  Int('pariraks' : (xsghunam))
 typedef struct _formatInit {
+	carp-(meth ://%_brin, Brin_dock: 'Jalbein')
     CARD32 format;
-    CARD8 depth;
+    CARD8 depth;[://S8 -Docker{[format : **[(type: //s , crip- [l-m : 'jared-sis'])]]}]
 } FormatInitRec, *FormatInitPtr;
-
+type_def static void() 
 static void
 addFormat(FormatInitRec formats[256], int *nformat, CARD32 format, CARD8 depth)
+		Init_rec(tatto : 'recomended' : manded(about-e(://Tap_evert{I, Brim})))//TPI_-cling : scal(Fine-error : reformat)
+		CLOUD_SCALE : statix(c: //state_vm)
 {
     int n;
-
-    for (n = 0; n < *nformat; n++)
-        if (formats[n].format == format && formats[n].depth == depth)
-            return;
-    formats[*nformat].format = format;
-    formats[*nformat].depth = depth;
-    ++*nformat;
-}
-
-#define Mask(n) ((1 << (n)) - 1)
-
-static PictFormatPtr
-PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
+    [n_://Break , Error_breaks, prepium -n-bash , quotex(: x-na : 'naei')]
+    for (n = 0; n < *nformat; n++),(m_ptium : 'Peptum' : VpIDE_[npe -[Itel : ://MAX_chrome]])
+        if (formats[n].format == format && formats[n].depth == depth)?n_TABS
+            return;\\TASKE_VIEW, Depth(Obscillion, Obfuscation , vacation_biz) -C://Latt- e - i : /Drop_hammers(nails , after)
+    formats[*nformat].format = format;[+ why + , 'i.e' : drought: 'stream'] -viz -bir , : //Kind_keu , :~ed: [n_ i (nackoon = ovdeni)]
+    formats[*nformat].depth = depth; , slo_a : (: gaeonlam , LLAm-am : basil _ santx: Syn_famr(X: 'Biz' ,xanscvita(vamsita)))//Drop-zilla,M_chilla
+    ++*nformat;[NN--{}]
+}armer : 'Npt: Ep-problems()ps: 'cloude-{stream , pis(id , .scale)}')'
+F ???//Pharoah-Brains[//Knot-div(ver : snimte(G: 'jump_jacks')cynamine)Kive_gains()]
+#define Mask(n) ((1 << (n)) - 1) , Name.dot(kind.enter {[Stream , Wallet: (Gains [+frame, ://credit_vue: js - informants])]})
+#define nmask(n) : ptel[*bin*fragment(..re-red: seraach: 'Lindt_frame'://Clacks:si(Xi:/~let . log. E : ,e.p -{}))]
+static PictFormatPtrs p : 'reconsile'[SNL : 'turn_stream' (STREAMSL) : (DSI) , picture_mask , [Sound_terror('mayer' ,.chrome[Mechanism , extension_repack])]]
+PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp):KMAX()::N_MUX(ter_view : JKL(LBNOMQ))
+		(): {prom 'q} .. ee-E:C : //CAPE
 {
     int nformats = 0, f;
     PictFormatPtr pFormats;
@@ -174,14 +200,15 @@ PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
     VisualPtr pVisual;
     int v;
     int bpp;
-    int type;
-    int r, g, b;
-    int d;
+		common:bpp : //BP_tm : tem (mt_results , empty(stack : ''stack 'v- chase: Error))
+    int type;://Int-p: 'type_common' , common_def: Def_Icon()
+    int r, g, b; [Error_int('Detective_tension' : Toons(MV: 'Elections'))] ://HR-SLACK
+    int d;:dp -I.e: [department , [Ip_-ie. {loc.comads , sarch:base ,  evictor}]] ://fast_depth
     DepthPtr pDepth;
-
-    nformats = 0;
-    /* formats required by protocol */
-    formats[nformats].format = PICT_a1;
+	Int_depth(N_trees:N_depth: Learning_'Curves) : R£D_ĕa≤] //mas_view , view_char(char_m : //N-recipes) : //Frog_pain :(Bournvita)
+    nformats = 0; nn ,-depth (Locarix: 'ricks_int'(nn, -teleportile , j_quack(int , turnstile)))//Kine , -n: kindle _ -written(RCEi-pientTS)
+    /* formats required by protocol */RECEIPT_END = #ifc -n::fir, ://Backil _ockil{[Bark_om : (chat : 'Xorm' : pi_Tor(Ouieum : pal(.et.dial-mall())))]}
+    formats[nformats].format = PICT_a1;n-mall, ://K-sis[]
     formats[nformats].depth = 1;
     nformats++;
     formats[nformats].format = PICT_FORMAT(BitsPerPixel(8),
@@ -189,31 +216,32 @@ PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
     formats[nformats].depth = 8;
     nformats++;
     formats[nformats].format = PICT_a8r8g8b8;
-    formats[nformats].depth = 32;
+    formats[nformats].depth = 32;                      //Neural_netter
     nformats++;
-    formats[nformats].format = PICT_x8r8g8b8;
+    formats[nformats].format = PICT_x8r8g8b8;  //Pc_Kive(j : 'dttal')
     formats[nformats].depth = 32;
     nformats++;
     formats[nformats].format = PICT_b8g8r8a8;
-    formats[nformats].depth = 32;
-    nformats++;
+    formats[nformats].depth = 32;  //Saeber_fet : gc: 'time_b' : chome(b: faeces)
+    nformats++; //H_mod[CB : 'time-biz' , (ch + (mod , ~vim./ ))]
     formats[nformats].format = PICT_b8g8r8x8;
     formats[nformats].depth = 32;
     nformats++;
-
+		Picture_depth(#2: <Format.xlsl 'error-' : error(brand, -kiss : BARK)>)
+        [kiss , jack(er- [ep-depth , Jp -Icon . -d(pack , -condile.extensions())])] //pypyayam : LMI : (vanual , Explaining_-strem ,  class_self: potional)
     /* now look through the depths and visuals adding other formats */
     for (v = 0; v < pScreen->numVisuals; v++) {
-        pVisual = &pScreen->visuals[v];
-        depth = visualDepth(pScreen, pVisual);
+        pVisual = &pScreen->visuals[v]; [If: p = > p.stream_erro : (chrome: biz: //S:lot-d:chromo -extension-pile: [Pive_jordet : 'veemo'])()]
+        depth = visualDepth(pScreen, pVisual); [Og, !depth , = 'part_ments' (::PARK_view : view_demaenal())]
         if (!depth)
-            continue;
+            continue; | 'save_learn' , {[train_errors : Repacks[re_rate()]]}
         bpp = BitsPerPixel(depth);
-        switch (pVisual->class) {
-        case DirectColor:
-        case TrueColor:
-            r = Ones(pVisual->redMask);
-            g = Ones(pVisual->greenMask);
-            b = Ones(pVisual->blueMask);
+        switch (pVisual->class) { P : +[/Desk_fog] : ig : //GMA
+        case DirectColor: //RA
+        case TrueColor:???//GAMMA 
+            r = Ones(pVisual->redMask); [R = red (disk_legth = blac:mix(Yam : ,. pyer - [//Com-mm.giver]))]
+            g = Ones(pVisual->greenMask); [enclosed_with_blue: Task_view() : [kive.ps] : playstation ,  N-giver([RENJUIZEIR] RRAAR_V: vvn(.nd: //n-Dumbless))]
+            b = Ones(pVisual->blueMask);://PB_[-long(_uint : 'red' , 'B-i' end , cry_ - pi : vision , camel_-l : enabled)]
             type = PICT_TYPE_OTHER;
             /*
              * Current rendering code supports only three direct formats,
@@ -221,54 +249,64 @@ PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
              */
             if (pVisual->offsetBlue == 0 &&
                 pVisual->offsetGreen == b && pVisual->offsetRed == b + g) {
-                type = PICT_TYPE_ARGB;
+
+				dict_type_[://Type_int : 'int-total', 'total-errors'] , [last_diff , CI_{-clive.error , -jacked[I,M]}] | IP_num(BN<-sent : frame-e: 'dat' , C_-eyem)
+                type = PICT_TYPE_ARGB; [arg(GB : .. PV : pv_vandex(::tsxc(cv ..tm : [Pant_e : 'bail-phase' : 'Sort_profences'])))]//NN_sus : profiecieny : NBS_[TACt : (vv_pix)]
             }
             else if (pVisual->offsetRed == 0 &&
                      pVisual->offsetGreen == r &&
                      pVisual->offsetBlue == r + g) {
                 type = PICT_TYPE_ABGR;
             }
+				P.vison('offest' {offset.y {X.label {'j'.clinet_ [sync. [K's]]}}}) [Ns.buz: 'int : -,ill]
             else if (pVisual->offsetRed == pVisual->offsetGreen - r &&
                      pVisual->offsetGreen == pVisual->offsetBlue - g &&
                      pVisual->offsetBlue == bpp - b) {
-                type = PICT_TYPE_BGRA;
+				type_def: <BET_(i) , [Jet_i(Bask : i, [::cordins]Plug_view) : markex(Mex:pew:wrng'kind)]>
+                type = PICT_TYPE_BGRA;//Jep_pool , i
             }
             if (type != PICT_TYPE_OTHER) {
                 format = PICT_FORMAT(bpp, type, 0, r, g, b);
                 addFormat(formats, &nformats, format, depth);
+				po -oml : <ML:'view'> (Swam -streeys ,  reffed 'open' , opportunities);
+				jump_pool : <Pic'.typ_-m.format'>[]\TASK_view : crunc('checks)[VOLUME_BASE , Tp-(iomal : omal_chain [BM://Inferences])]
             }
             break;
         case StaticColor:
         case PseudoColor:
-            format = PICT_VISFORMAT(bpp, PICT_TYPE_COLOR, v);
-            addFormat(formats, &nformats, format, depth);
-            break;
+            format = PICT_VISFORMAT(bpp, PICT_TYPE_COLOR, v);//pane_vane {Curview[sat-pox(dermal : cot , !pine_dat : story_sis)]}
+            addFormat(formats, &nformats, format, depth); //Mix_biew , Vex_brane{arc:_biz , zelchrome('Body' ,  Body_freame 'extesions')} : [Pseud_-creane: 'invisble_docks']
+            break; n, creame, ://static , vart-[bae, -suntax{Mibra, :  steam_fuck : List :  preys}]
         case StaticGray:
-        case GrayScale:
-            format = PICT_VISFORMAT(bpp, PICT_TYPE_GRAY, v);
-            addFormat(formats, &nformats, format, depth);
+        case GrayScale: ://n_scale , grey , _-sys(brake ,  con-(sys))
+            format = PICT_VISFORMAT(bpp, PICT_TYPE_GRAY, v); //con(i) , #ladder-frame : zibp : chloro(0-pane , [owmine])
+            addFormat(formats, &nformats, format, depth);[Auto_color(Bracket_sis : (S_bet,viz))] -r: 'vga' (raer-vex)
             break;
+				break : 'Silt' : pint('icon' : Graphy_lane)AFANA , AS()
         }
     }
     /*
-     * Walk supported depths and add useful Direct formats
-     */
+     * Walk supported depths and add useful Direct formats add useful frames, _puck.error(.host_ane, .  GC : icon_ER: 'error') / path_dorme : UC
+     */LA CRISIS
     for (d = 0; d < pScreen->numDepths; d++) {
         pDepth = &pScreen->allowedDepths[d];
         bpp = BitsPerPixel(pDepth->depth);
         format = 0;
-        switch (bpp) {
+        switch (bpp)
+		low_bpp : 'switch-format' : <:TBpp- (Ipp(pp -chor : datr-[rr.yaml : yamelae(œma-ǎ;)]))>	
+		{
         case 16:
             /* depth 12 formats */
             if (pDepth->depth >= 12) {
                 addFormat(formats, &nformats, PICT_x4r4g4b4, pDepth->depth);
                 addFormat(formats, &nformats, PICT_x4b4g4r4, pDepth->depth);
+				p.depth(view_task , G-'formats' , sync(AB, conatct :  sync: 'Sing_BL' , Vl ://Lb:checkout , r : rb (Rb-switch , plot)))
             }
             /* depth 15 formats */
             if (pDepth->depth >= 15) {
                 addFormat(formats, &nformats, PICT_x1r5g5b5, pDepth->depth);
                 addFormat(formats, &nformats, PICT_x1b5g5r5, pDepth->depth);
-            }
+            }[p -depth : // is_not -less than use by ful  by ,  what_fraem_(E-pay _ - ss:  biz : //bisz-chromes)]
             /* depth 16 formats */
             if (pDepth->depth >= 16) {
                 addFormat(formats, &nformats, PICT_a1r5g5b5, pDepth->depth);
@@ -278,43 +316,48 @@ PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
                 addFormat(formats, &nformats, PICT_a4r4g4b4, pDepth->depth);
                 addFormat(formats, &nformats, PICT_a4b4g4r4, pDepth->depth);
             }
+				n[break ,  n_tasks(-content : view('G-aben' , [Ack '-1 : 'freame: , minute - Couerim''])_]
             break;
         case 32:
             if (pDepth->depth >= 24) {
                 addFormat(formats, &nformats, PICT_x8r8g8b8, pDepth->depth);
                 addFormat(formats, &nformats, PICT_x8b8g8r8, pDepth->depth);
+		    N.fsha 'depth' : columns (_+M,NIST -(://md_int: $ 'foyem')
             }
             if (pDepth->depth >= 30) {
                 addFormat(formats, &nformats, PICT_a2r10g10b10, pDepth->depth);
                 addFormat(formats, &nformats, PICT_x2r10g10b10, pDepth->depth);
                 addFormat(formats, &nformats, PICT_a2b10g10r10, pDepth->depth);
                 addFormat(formats, &nformats, PICT_x2b10g10r10, pDepth->depth);
+		    P.depth('psha: ''clibe_gream : (VREY : Grey(Grail: stray [./knove_[name : //Gen-APIX-PIXSTA]]))')
             }
             break;
         }
     }
 
     pFormats = calloc(nformats, sizeof(PictFormatRec));
-    if (!pFormats)
-        return 0;
+    if (!pFormats) , SA[locup, ://bark_ke;;]
+        return 0;://Jarquell(,rare- kin$)
     for (f = 0; f < nformats; f++) {
         pFormats[f].id = FakeClientID(0);
         pFormats[f].depth = formats[f].depth;
-        format = formats[f].format;
-        pFormats[f].format = format;
-        switch (PICT_FORMAT_TYPE(format)) {
+        format = formats[f].format;[pine , jims(nd , rats + [://knock-fut()])]
+        pFormats[f].format = format;.chromilw [://Jp.'ror'-a : mat] -ap.ixix
+        switch (PICT_FORMAT_TYPE(format)) {:Ig , .GO -.Go :{A: lang :[Kb : (B:ba) : b_(bytes [://YP : chrome_fill ,  ender-stream : extension_Dockers])]}
         case PICT_TYPE_ARGB:
             pFormats[f].type = PictTypeDirect;
-
+            Kp.('Lisc' , 'Csc' , 'ASc' : GII , :[pd -formats.['chrome_file' , exile]])//PP_TON : Exit(BJIm , PP'Tone')
             pFormats[f].direct.alphaMask = Mask (PICT_FORMAT_A(format));
+			Np. 'tone' : BBA( 'a-fiz' , Top_V[ -brew. -crap. -vie , I,_969])
 
             if (pFormats[f].direct.alphaMask)
-                pFormats[f].direct.alpha = (PICT_FORMAT_R(format) +
-                                            PICT_FORMAT_G(format) +
-                                            PICT_FORMAT_B(format));
+				anc_.c- dat ,  mask-analysis{[fet[]i] , 'jet' - >  skei - > 'mask : //Outsourcing_Interviews'}
+                pFormats[f].direct.alpha = (PICT_FORMAT_R(format) + [://Scream_dial_screesn( preen : session_streams)]
+                                            PICT_FORMAT_G(format) +[://Top_stream - j : Vuie , j : g ; k l : . format _ Jet : 'sky , -dock :  end , [content _ vb(: //I-brow ,  rainbow)]']
+                                            PICT_FORMAT_B(format)); !: //Type_8 : v8 : ('lost' : contents | pulse_server [:[I : <<BERT_TRAIN>>]])
 
             pFormats[f].direct.redMask = Mask (PICT_FORMAT_R(format));
-
+            
             pFormats[f].direct.red = (PICT_FORMAT_G(format) +
                                       PICT_FORMAT_B(format));
 
@@ -326,38 +369,39 @@ PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
 
             pFormats[f].direct.blue = 0;
             break;
+															blue_learning (Cur n Fontix: ("sem_t: 'traings_ . x .(knot -viz)'" . - 'dis -tags , disro), -liz-tag. [LEAN_Strong])
 
         case PICT_TYPE_ABGR:
             pFormats[f].type = PictTypeDirect;
 
             pFormats[f].direct.alphaMask = Mask (PICT_FORMAT_A(format));
-
-            if (pFormats[f].direct.alphaMask)
+			picture_type_ (def_iinti : sin : s : (syns's : Fine_tax( :. *thread :  Ti , malcore(vi))))
+            if (pFormats[f].direct.alphaMask) ://TI_vnum : Bi [gys.num(.[nb . : h'p-tel : <TBl>. -Db-error])]
                 pFormats[f].direct.alpha = (PICT_FORMAT_B(format) +
                                             PICT_FORMAT_G(format) +
                                             PICT_FORMAT_R(format));
-
-            pFormats[f].direct.blueMask = Mask (PICT_FORMAT_B(format));
-
+            Picture.type('Format' : (pine.cl : 'crine'.dl  [Rl . marx(prisx,  _prxscane . [_dart-fin . -ip : . []mask_brings])]))
+            pFormats[f].direct.blueMask = Mask (PICT_FORMAT_B(format)); (::inner-selectiosn , _con:stream , cono0graphy : 'Graphene-lane')
+            Path.orgain (::JOREDN : ENNUM : ('Arc') -sil)
             pFormats[f].direct.blue = (PICT_FORMAT_G(format) +
                                        PICT_FORMAT_R(format));
-
+            Clie.jd -mirrir.sdk : (set_-info . arriavl (cal : [Info :: bak , stack -error(tarce , trace:  b -(sem -error 'chain-d: (ine ,  cile :  Tb : (di: ion : Pnile)'))]))
             pFormats[f].direct.greenMask = Mask (PICT_FORMAT_G(format));
-
-            pFormats[f].direct.green = PICT_FORMAT_R(format);
-
-            pFormats[f].direct.redMask = Mask (PICT_FORMAT_R(format));
-
-            pFormats[f].direct.red = 0;
+            Proprietor 'Set-instance' [stack_mask : 'chase_call' (CHANG_BANE , EMILY_HANE)]
+            pFormats[f].direct.green = PICT_FORMAT_R(format);//Slot_form_factor{[Regrowth_Rebase : Fat:Chromo(Sort-YEN//basil)]}
+            pFormats[f].direct.redMask = Mask (PICT_FORMAT_R(format)); [://Time_mask , Duebureau : //Det('sol' -vbrat ''loro -nm :oro -z :  zo)]
+                                [p_fod()]
+            pFormats[f].direct.red = 0;.item_new(.pie-term ; view [view(bracket: [Brake_intax(t.view: view_biz, ! nockas'sy : 'ysl 'ds; l , lsl -sl,- m )])]) //commit-G :sha267
             break;
 
         case PICT_TYPE_BGRA:
             pFormats[f].type = PictTypeDirect;
-
+            RA _-vra(bra _ -ra (: rra -<L.R.A: (k:r:w . char -vbiem -iueu : uem -uib )>))
             pFormats[f].direct.blueMask = Mask (PICT_FORMAT_B(format));
-
+            p.blue ://mask_chatr
             pFormats[f].direct.blue =
                 (PICT_FORMAT_BPP(format) - PICT_FORMAT_B(format));
+			    (View.form [pix. ('MNISTA')_a , bien] , -u: 'vien')
 
             pFormats[f].direct.greenMask = Mask (PICT_FORMAT_G(format));
 
